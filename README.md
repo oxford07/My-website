@@ -1,21 +1,118 @@
-# 웹 계산기 프로젝트
+<!DOCTYPE html>
+<html>
+<head>
+  <title>계산기</title>
+  <style>
+    body {
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial;
+    }
 
-간단한 웹 계산기 앱입니다.  
-HTML, CSS, JavaScript로 제작되었으며, 버튼 클릭으로 숫자와 연산을 입력하고 계산할 수 있습니다.
+    .calculator {
+      background: #020617;
+      padding: 20px;
+      border-radius: 20px;
+      width: 250px;
+    }
 
-## 🖥️ 사용 방법
-1. index.html 파일을 브라우저에서 열기
-2. 숫자와 연산 버튼 클릭
-3. '=' 버튼 클릭 시 결과 표시
-4. 'C' 버튼 클릭 시 초기화
+    #display {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      text-align: right;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
 
-## 🎨 특징
-- 깔끔한 다크 테마 디자인
-- 버튼 클릭 애니메이션 적용 가능
-- GitHub Pages로 배포 가능
+    button {
+      width: 23%;
+      height: 50px;
+      margin: 1%;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
-## 🔗 배포 링크
-- [내 계산기 웹사이트](https://아이디.github.io/저장소이름)  ← 배포 후 변경
+    .operator {
+      background: #38bdf8;
+    }
 
-## 👨‍💻 제작자
-홍길동
+    .equal {
+      background: #22c55e;
+      width: 48%;
+    }
+
+    .clear {
+      background: #ef4444;
+      width: 48%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="calculator">
+  <input type="text" id="display" disabled>
+
+  <div>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button class="operator" onclick="add('/')">÷</button>
+  </div>
+
+  <div>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button class="operator" onclick="add('*')">×</button>
+  </div>
+
+  <div>
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button class="operator" onclick="add('-')">−</button>
+  </div>
+
+  <div>
+    <button onclick="add('0')">0</button>
+    <button onclick="add('.')">.</button>
+    <button class="operator" onclick="add('+')">+</button>
+  </div>
+
+  <div>
+    <button class="clear" onclick="clearDisplay()">C</button>
+    <button class="equal" onclick="calculate()">=</button>
+  </div>
+</div>
+
+<script>
+  let display = document.getElementById("display");
+
+  function add(value) {
+    display.value += value;
+  }
+
+  function clearDisplay() {
+    display.value = "";
+  }
+
+  function calculate() {
+    try {
+      display.value = eval(display.value);
+    } catch {
+      display.value = "Error";
+    }
+  }
+</script>
+
+</body>
+</html>
